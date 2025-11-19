@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- task CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/task_list.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+  <title>タスク管理</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/task.js"></script>
+</head>
+
+<body class="bg-light">
+
+  <header class="header">
+    <h1>MY PROJECT</h1>
+    <div class="new-task-btn">
+      <a href="/task/new">New Task</a>
+    </div>
+  </header>
+
+  <!-- メインコンテンツーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+  <main class="container my-4">
+    <form id="taskForm" method="post" action="/task/delete">
+      <div th:text="${deleteNum}"></div>
+
+      <!-- Active -->
+      <div class="section-header">
+        <img src="/img/status.png" class="ornament" alt="ornament" />
+        <h1>Active</h1>
+      </div>
+
+      <!-- タスク全体 -->
+      <div class="task">
+
+        <!-- 上装飾 -->
+        <img src="/img/task_kaza.png" class="task-decoration-overlay top" alt="装飾上" />
+        <div class="task-list">
+          <div class="completion">
+            <button type="button">完了</button>
+          </div>
+          <!-- 各タスク -->
+          <div th:each="item : ${task_list}">
+            <div class="task-card">
+              <input type="checkbox" class="task-checkbox" id="taskCheckBox" name="check[]"
+                th:value="${item.task_id}" />
+              <div class="task-info">
+                <p class="task-title" th:text="${item.title}">プロジェクトI 基本設計</p>
+                <p class="task-deadline">
+                  期限：<span th:text="${item.deadline}">2025.11.01</span>
+                  　残り：<span th:text="${item.daysLeft}">10日</span>
+                </p>
+              </div>
+              <div class="task-edit">
+                <a th:href="@{/task/new(task_id=${item.task_id})}" class="edit-button">編集</a>
+              </div>
+            </div>
+            <img src="/img/task-bo.png" class="task-shikiri" alt="しきり" />
+          </div>
+
+        </div>
+        <!-- 下装飾 -->
+        <img src="/img/task_kaza.png" class="task-decoration-overlay bottom" alt="装飾下" />
+
+      </div>
+
+      <!-- Hold -->
+      <div class="section-header">
+        <img src="/img/status.png" class="ornament" alt="ornament" />
+        <h1>Hold</h1>
+      </div>
+
+      <!-- タスク全体 -->
+      <div class="task">
+
+        <!-- 上装飾 -->
+        <img src="/img/task_kaza.png" class="task-decoration-overlay top" alt="装飾上" />
+        <div class="task-list">
+          <div class="completion">
+            <button type="button">完了</button>
+          </div>
+          <!-- 各タスク -->
+          <div th:each="stay:${stay_list}">
+            <div class="task-card">
+              <input type="checkbox" class="task-checkbox" id="taskCheckBox" name="check[]"
+                th:value="${stay.task_id}" />
+              <div class="task-info">
+                <p class="task-title" th:text="${stay.title}">プロジェクトI 基本設計</p>
+                <p class="task-deadline">
+                  期限：<span th:text="${stay.deadline}">2025.11.01</span>
+                  　残り：<span th:text="${stay.daysLeft}">10日</span>
+                </p>
+              </div>
+              <div class="task-edit">
+                <a th:href="@{/task/new(task_id=${stay.task_id})}" class="edit-button">編集</a>
+              </div>
+            </div>
+            <img src="/img/task-bo.png" class="task-shikiri" alt="しきり" />
+          </div>
+
+        </div>
+        <!-- 下装飾 -->
+        <img src="/img/task_kaza.png" class="task-decoration-overlay bottom" alt="装飾下" />
+
+      </div>
+    </form>
+
+
+  </main>
+  
+<footer>
+		<div class="logout">
+      		<a href="/login">logout</a>
+    	</div>
+	</footer>
+
+
+</body>
+
+</html>

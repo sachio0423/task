@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: "Hannari", "Sawarabi Mincho", sans-serif;
+  background: url('../img/login.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-weight: 100;
+
+  /* 中央揃え */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* メインのガラスボックス */
+.garasu2 {
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-right-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 40px;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  filter: drop-shadow(10px 10px 20px black);
+}
+.garasu {
+  display: flex;
+  justify-content: center;
+}
+
+/* フォーム内のラベルと入力欄 */
+form div {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: "Hannari", "Sawarabi Mincho", "serif"; 
+}
+
+/* ログインボタン */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #b5a893;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+   font-family: "Hannari", "Sawarabi Mincho", "serif";  /* ← 追加 */
+}
+
+button[type="submit"]:hover {
+  background-color: #b5a893;
+
+}
+
+/* タイトル */
+h1 {
+	font-family: "Hannari", "Sawarabi Mincho", sans-serif;
+	margin-top:0;
+	font-family: 'Georgia', serif;
+  	font-size: 28px;
+  	margin-bottom: 30px;
+}
+
+.shinki {
+	font-size: 15px;
+	margin-bottom: 0;
+}
+
+.shinki a {
+	margin-bottom: 0;
+  	color: #fff;
+  	text-decoration: none;
+}
+
+

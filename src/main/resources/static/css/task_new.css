@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: url('../img/haike.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: "Hannari", "Sawarabi Mincho";
+  font-weight: 100;
+  max-width: 400px; /* 必要に応じて調整 */
+}
+
+.header {
+  height: 1rem; /* 必要に応じて調整 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1a1535;
+}
+
+.header h1 {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+}
+
+/* ステータス情報 -------------------------------------------------------------------------- */
+.section-header {
+  position: relative;
+  width: fit-content;
+  margin: 30px auto 0px auto; /* 中央寄せ */
+}
+
+.ornament {
+  display: block;
+  width: 70%; /* 画像の横幅に合わせる */
+  height: auto;
+  opacity: 0.9;
+    margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header h1 {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel Decorative', 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #b5a893;
+  margin: 0;
+  pointer-events: none; /* クリックの干渉を防ぐ */
+}
+
+.ornament {
+  height: 80px; /* 状況に応じて調整 */
+  opacity: 0.9;
+}
+/* end ステータス情報 ---------------------------------------------------------------------- */
+
+.new_task {
+  position: relative;
+  margin: 0px 30px; /* 任意で調整 */
+}
+
+.task-sakusei {
+  background-color: rgba(22, 0, 36, 0.7);
+  /* mix-blend-mode: soft-light; */
+  padding: 20px; /* フォーム周りの余白 */
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.task-sakusei h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  display: block;
+  text-align: right; 
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin: 20px 20px 0 0;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+
+/* 入力フォーム------------------------------------------------------------------------------------ */
+.nyuryok {
+  margin: 20px ;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group select {
+  width: calc(100%); /* input[type="text"] と同じ幅にする */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* paddingとborderをwidthに含める */
+}
+
+.form-group select {
+  width: auto;
+  margin-right: 10px; /* 以前の設定は維持 */
+}
+
+.kigen {
+  display: flex;
+  gap: 5px; /* 各ボックスの間隔 */
+}
+
+.kigen select {
+  flex: 1; /* 均等に幅を配分 */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.status{
+  display: flex;
+}
+.status select{
+  flex: 1;
+}
+
+/* end入力フォーム------------------------------------------------------------------------------------ */
+
+
+.btn-save {
+  display: block;
+  margin: 20px auto; /* 中央揃え */
+  border-radius: 8px; 
+  background-color:transparent;
+  border: 1px solid #ccc;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.alert-danger {
+  color: #a94442;
+}
+
+/* 装飾画像の共通設定 */
+.task-decoration-overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 上の装飾画像 */
+.task-decoration-overlay.top {
+  top: 0;
+  transform: translateY(-2%); /* 必要に応じて調整 */
+}
+
+/* 下の装飾画像 */
+.task-decoration-overlay.bottom {
+  bottom: 0;
+  transform: translateY(2%) rotate(180deg); /* 必要に応じて調整 */
+}
