@@ -1,122 +1,121 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- task CSS -->
   <link rel="stylesheet" type="text/css" href="../css/task_list.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
-  <title>タスク管理</title>
+  <title>タスク管理ツール</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/js/task.js"></script>
 </head>
 
-<body class="bg-light">
-
-  <header class="header">
-    <h1>MY PROJECT</h1>
-    <div class="new-task-btn">
-      <a href="/task/new">New Task</a>
+<body>
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <div class="app-header-inner">
+      <h1 class="app-title">タスク管理ツール</h1>
+      <a href="/task/new" class="btn-primary">新規タスク</a>
     </div>
   </header>
 
-  <!-- メインコンテンツーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
-  <main class="container my-4">
+  <!-- メイン -->
+  <main class="page">
     <form id="taskForm" method="post" action="/task/delete">
       <div th:text="${deleteNum}"></div>
 
-      <!-- Active -->
-      <div class="section-header">
-        <img src="/img/status.png" class="ornament" alt="ornament" />
-        <h1>Active</h1>
-      </div>
-
-      <!-- タスク全体 -->
-      <div class="task">
-
-        <!-- 上装飾 -->
-        <img src="/img/task_kaza.png" class="task-decoration-overlay top" alt="装飾上" />
-        <div class="task-list">
-          <div class="completion">
-            <button type="button">完了</button>
-          </div>
-          <!-- 各タスク -->
-          <div th:each="item : ${task_list}">
-            <div class="task-card">
-              <input type="checkbox" class="task-checkbox" id="taskCheckBox" name="check[]"
-                th:value="${item.task_id}" />
-              <div class="task-info">
-                <p class="task-title" th:text="${item.title}">プロジェクトI 基本設計</p>
-                <p class="task-deadline">
-                  期限：<span th:text="${item.deadline}">2025.11.01</span>
-                  　残り：<span th:text="${item.daysLeft}">10日</span>
-                </p>
-              </div>
-              <div class="task-edit">
-                <a th:href="@{/task/new(task_id=${item.task_id})}" class="edit-button">編集</a>
-              </div>
-            </div>
-            <img src="/img/task-bo.png" class="task-shikiri" alt="しきり" />
-          </div>
-
+      <!-- 進行中 -->
+      <section class="task-section">
+        <div class="task-section-header">
+          <h2 class="task-section-title">進行中</h2>
+          <button type="button" class="btn-outline section-action">完了</button>
         </div>
-        <!-- 下装飾 -->
-        <img src="/img/task_kaza.png" class="task-decoration-overlay bottom" alt="装飾下" />
 
-      </div>
-
-      <!-- Hold -->
-      <div class="section-header">
-        <img src="/img/status.png" class="ornament" alt="ornament" />
-        <h1>Hold</h1>
-      </div>
-
-      <!-- タスク全体 -->
-      <div class="task">
-
-        <!-- 上装飾 -->
-        <img src="/img/task_kaza.png" class="task-decoration-overlay top" alt="装飾上" />
-        <div class="task-list">
-          <div class="completion">
-            <button type="button">完了</button>
-          </div>
-          <!-- 各タスク -->
-          <div th:each="stay:${stay_list}">
-            <div class="task-card">
-              <input type="checkbox" class="task-checkbox" id="taskCheckBox" name="check[]"
-                th:value="${stay.task_id}" />
-              <div class="task-info">
-                <p class="task-title" th:text="${stay.title}">プロジェクトI 基本設計</p>
-                <p class="task-deadline">
-                  期限：<span th:text="${stay.deadline}">2025.11.01</span>
-                  　残り：<span th:text="${stay.daysLeft}">10日</span>
-                </p>
-              </div>
-              <div class="task-edit">
-                <a th:href="@{/task/new(task_id=${stay.task_id})}" class="edit-button">編集</a>
-              </div>
-            </div>
-            <img src="/img/task-bo.png" class="task-shikiri" alt="しきり" />
-          </div>
-
+        <div class="task-section-body">
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th class="col-check"></th>
+                <th class="col-title">タイトル</th>
+                <th class="col-deadline">期限</th>
+                <th class="col-days">残り日数</th>
+                <th class="col-action"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="item : ${task_list}">
+                <td class="col-check">
+                  <input type="checkbox"
+                         class="task-checkbox"
+                         name="check[]"
+                         th:value="${item.task_id}" />
+                </td>
+                <td class="col-title">
+                  <span th:text="${item.title}">詳細設計書のExcelUP</span>
+                </td>
+                <td class="col-deadline">
+                  <span th:text="${item.deadline}">01.31(金)</span>
+                </td>
+                <td class="col-days">
+                  <span th:text="${item.daysLeft}">2日</span>
+                </td>
+                <td class="col-action">
+                  <a th:href="@{/task/new(task_id=${item.task_id})}"
+                     class="btn-small-outline">編集</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <!-- 下装飾 -->
-        <img src="/img/task_kaza.png" class="task-decoration-overlay bottom" alt="装飾下" />
+      </section>
 
-      </div>
+      <!-- 保留（もともとの Hold） -->
+      <section class="task-section">
+        <div class="task-section-header">
+          <h2 class="task-section-title">保留</h2>
+          <button type="button" class="btn-outline section-action">完了</button>
+        </div>
+
+        <div class="task-section-body">
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th class="col-check"></th>
+                <th class="col-title">タイトル</th>
+                <th class="col-deadline">期限</th>
+                <th class="col-days">残り日数</th>
+                <th class="col-action"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="stay : ${stay_list}">
+                <td class="col-check">
+                  <input type="checkbox"
+                         class="task-checkbox"
+                         name="check[]"
+                         th:value="${stay.task_id}" />
+                </td>
+                <td class="col-title">
+                  <span th:text="${stay.title}">詳細設計書のExcelUP</span>
+                </td>
+                <td class="col-deadline">
+                  <span th:text="${stay.deadline}">01.31(金)</span>
+                </td>
+                <td class="col-days">
+                  <span th:text="${stay.daysLeft}">2日</span>
+                </td>
+                <td class="col-action">
+                  <a th:href="@{/task/new(task_id=${stay.task_id})}"
+                     class="btn-small-outline">編集</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </form>
-
-
   </main>
-  
-<footer>
-		<div class="logout">
-      		<a href="/login">logout</a>
-    	</div>
-	</footer>
 
-
+  <footer class="app-footer">
+    <a href="/login" class="logout-link">logout</a>
+  </footer>
 </body>
-
 </html>
