@@ -1,245 +1,190 @@
+/* 全体 */
 body {
   margin: 0;
-  font-family: 'Noto Sans JP', sans-serif;
-  background: url('../img/haike.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  font-family: "Hannari","Sawarabi Mincho";
-  font-weight: 100;
-  max-width: 400px;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background-color: #f1f3f5;
+  color: #333;
 }
 
-.header {
-  height: 1rem;
+/* ヘッダー */
+.app-header {
+  background-color: #262c33;
+  padding: 16px 0;
+}
+
+.app-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #1a1535;
 }
 
-.header h1 {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
-}
-
-.new-task-btn{
-	font-size: 10px;
-	color: #1a1535;
-	text-decoration: none;
-	background-color: #fff;
-	padding: 5px 8px;
-	border-radius: 5px;
-}
-.new-task-btn a{
-	text-decoration: none;
-}
-
-/* ステータス情報------------------------------------------------------------------------------------------------------------------------ */
-
-.section-header {
-  position: relative;
-  width: fit-content;
-  margin: 30px auto 0px auto; /* 中央寄せ */
-}
-
-.ornament {
-  display: block;
-  width: 70%; /* 画像の横幅に合わせる */
-  height: auto;
-  opacity: 0.9;
-    margin-left: auto;
-  margin-right: auto;
-}
-
-.section-header h1 {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Cinzel Decorative', 'Georgia', serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #b5a893;
+.app-title {
   margin: 0;
-  pointer-events: none; /* クリックの干渉を防ぐ */
+  color: #ffffff;
+  font-size: 20px;
 }
 
-
-.ornament {
-  height: 80px; /* 状況に応じて調整 */
-  opacity: 0.9;
-}
-/* end------------------------------------------------------------------------------------------------------------------------ */
-
-.task {
-  position: relative;
-  margin: 0px 30px; /* 任意で調整 */
-}
-
-.task-list {
-  display: flex;
-  flex-direction: column; /* タスクを縦に並べる */
-  background-color: rgba(22, 0, 36, 0.7);
-  /* mix-blend-mode: soft-light; */
-  padding: 40px  40px; /* 装飾がかぶらないように上下左右に余白を確保 */
-  border-radius: 8px;
-  gap: 10px; /* タスクカード間の間隔を調整 */
-  position: relative;
-  z-index: 1;
-  overflow: visible;
-}
-
-/* 装飾画像の共通設定 */
-.task-decoration-overlay {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* 上の装飾画像（.task-listの上端に中央揃えで配置） */
-.task-decoration-overlay.top {
-  top: 0;
-  transform: translateY(-2%); /* 少し上に移動して中央に見せる */
-}
-
-/* 下の装飾画像（.task-listの下端に中央揃えで配置し、反転） */
-.task-decoration-overlay.bottom {
-  bottom: 0;
-  transform: translateY(2%) rotate(180deg); /* 少し下に移動して中央に見せる */
-}
-
-/* 各タスクカードのスタイルーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-.task-card {
-  display: flex;
-  align-items: center; /* チェックボックスとテキストを縦中央揃え */
-  justify-content: space-between; /* チェックボックスと右側の要素を左右に配置 */
-  padding: 0px 0; /* 上下の余白を調整 */
-  margin-bottom: 5px; /* 区切り線との間隔 */
-}
-
-/* タスク情報のスタイル */
-.task-info {
-  flex-grow: 1; /* 残りのスペースを占める */
-}
-
-/* チェックボックスーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-.task-checkbox {
-  appearance: none; /* デフォルトのチェックボックスのスタイルをリセット */
-  width: 15px; /* サイズ調整 */
-  height: 15px; /* サイズ調整 */
-  margin-right: 15px; /* チェックボックスとテキストの間隔 */
-  border-radius: 50%; /* 丸くする */
-  background-color: transparent; /* 塗りを透明にする */
-  border: 1px solid #ccc; /* 線の色と太さ */
-  cursor: pointer; /* ホバー時のカーソル */
-  display: inline-flex; /* チェックマークを中央に配置するため */
-  align-items: center;
-  justify-content: center;
-  outline: none; /* フォーカス時のデフォルトの枠線を削除 */
-}
-
-/* チェック時のスタイル（必要に応じて） */
-.task-checkbox:checked::before {
-  content: '';
-  display: block;
-  width: 10px; /* チェックマークのサイズ */
-  height: 10px; /* チェックマークのサイズ */
-  background-color: #fff; /* チェックマークの色（例：白） */
-  border-radius: 50%; /* チェックマークも丸くする場合 */
-}
-
-/* チェックボックスにフォーカスした時のスタイル（任意） */
-.task-checkbox:focus {
-  border-color: #aaa; /* フォーカス時の線の色を変更 */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* フォーカス時の影を追加 */
-}
-/* endチェックボックスーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-
-/* タスク文字ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-.task-title {
-  color: #fff; /* 画像の文字色に近い色 */
-  font-weight: bold;
-  font-size: 0.7em;
-  margin-bottom: 1px;
-}
-
-.task-deadline {
-  margin-top: 1px;
-  font-size: 0.6em;
-}
-/* endーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-
-/* 各タスクの下の装飾 */
-.task-shikiri {
-  width: 100%;
-  height: auto; /* 画像の比率を維持 */
-  display: block; /* インライン要素の回り込みを防ぐ */
-  margin-bottom: 0px; /* 次のタスクとの間隔（必要に応じて調整） */
-}
-
-/* 編集ボタンのスタイル */
-.task-edit {
-  margin-left: auto; /* 右端に配置 */
-}
-
-.edit-button {
-  background-color: transparent;
-  border: 1px solid #ccc;
-  color: #ccc;
-  padding: 4px 8px;
-  border-radius: 15px;
+/* 共通ボタン */
+.btn-primary {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 4px;
+  background-color: #ff5b30;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  border: none;
   cursor: pointer;
-  font-size: 0.5rem;
-  margin-right: 10px;
 }
 
-.edit-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* 完了ボタン------------------------------------------------------------------------------------------------------------------------ */
-.completion{
-	width: 3rem;
-  	text-decoration: none;
-	background-color: transparent;
-	border: 0.1px solid #fff;
-	border-radius: 5px;
-	margin-left: auto;
-}
-.completion button {
-	width: 100%;
-	font-family: "Hannari","Sawarabi Mincho";
-  	background-color: transparent;
-  	color: #fff;
-  	text-align: center; 
-  	border: none;
-}
-/* end------------------------------------------------------------------------------------------------------------------------ */
-
-footer {
-	margin-top: 30px;
-	margin-bottom: 0;
-	
-  width: 100%; /* 左右いっぱいに広げる */
-  height: auto;
-  display: flex;
-  justify-content: center; /* 内容を中央に配置 */
-  align-items: center;
-  padding: 10px 0; /* 左右の padding は不要 */
-  background-color: #1a1535;
-  color: #fff;
+.btn-primary.wide {
+  width: 120px;
   text-align: center;
-  font-size: 0.8rem;
 }
 
+.btn-outline {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 3px;
+  border: 1px solid #dde1e6;
+  background-color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
 
-.logout a {
-	font-size: 0.7rem;
-  color: #fff;
+.btn-small-outline {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #c2c7ce;
+  background-color: #ffffff;
+  font-size: 11px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* ページレイアウト */
+.page {
+  max-width: 960px;
+  margin: 40px auto;
+}
+
+/* セクション */
+.task-section {
+  background-color: #e3e7eb;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  margin-bottom: 32px;
+  padding: 16px 20px 20px;
+}
+
+.task-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.task-section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.section-action {
+  font-size: 12px;
+}
+
+/* テーブル */
+.task-section-body {
+  margin-top: 8px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.task-table thead tr {
+  background-color: #262c33;
+  color: #ffffff;
+}
+
+.task-table thead th {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.task-table tbody tr {
+  border-bottom: 1px solid #e1e4ea;
+}
+
+.task-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.task-table tbody td {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+/* 列幅 */
+.col-check {
+  width: 36px;
+  text-align: center;
+}
+
+.col-title {
+  text-align: left;
+}
+
+.col-deadline,
+.col-days {
+  width: 120px;
+  text-align: center;
+}
+
+.col-action {
+  width: 80px;
+  text-align: center;
+}
+
+/* チェックボックス（ラジオ風） */
+.task-checkbox {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #c2c7ce;
+  background-color: #ffffff;
+  cursor: pointer;
+  position: relative;
+}
+
+.task-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff5b30;
+}
+
+/* フッター */
+.app-footer {
+  padding: 16px 0 24px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.logout-link {
+  color: #666;
   text-decoration: none;
 }
