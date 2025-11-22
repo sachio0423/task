@@ -4,111 +4,113 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="../css/task_new.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
-  <title>タスク管理</title>
+  <title>タスク管理ツール</title>
 </head>
 
-<body class="bg-light">
-  <header class="header">
-    <h1>MY PROJECT</h1>
+<body>
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <div class="app-header-inner">
+      <h1 class="app-title">タスク管理ツール</h1>
+    </div>
   </header>
 
-  <main class="container my-4">
-    <div class="section-header">
-      <img src="/img/status.png" class="ornament" alt="ornament" />
-      <h1>New</h1>
-    </div>
-
-    <div class="new_task">
-      <img src="/img/task_kaza.png" class="task-decoration-overlay top" alt="装飾上" />
-      <div class="task-sakusei">
-        <h2><a href="/task/list" class="back-link">←戻る</a></h2>
-        <div class="nyuryok">
-          <form method="post" action="/task/new" th:object="${taskForm}">
-            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error"></div>
-            <div th:if="${message}" th:text="${message}" class="alert alert-danger"></div>
-
-            <input type="hidden" th:field="*{task_id}" />
-
-            <div class="form-group">
-              <label for="title">タイトル：</label>
-              <input type="text" id="title" name="title" th:field="*{title}">
-            </div>
-
-            <div class="form-group">
-              <label for="year">期限：</label>
-              <div class="kigen">
-                <select id="year" name="year" th:field="*{year}" class="year">
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                  <option value="2027">2027</option>
-                </select>
-                <select id="month" name="month" th:field="*{month}" class="month">
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select id="day" name="day" th:field="*{day}" class="day">
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="status">ステータス：</label>
-              <div class="status">
-                <select id="status" name="status" th:field="*{status}">
-                  <option value="進行中">進行中（ACTIVE）</option>
-                  <option value="保留">保留(HOLD）</option>
-                </select>
-              </div>
-            </div>
-
-            <button type="submit" class="btn-save">保存</button>
-          </form>
-        </div>
+  <!-- メイン -->
+  <main class="page">
+    <section class="new-task-card">
+      <div class="new-task-header">
+        <h2>新規作成</h2>
+        <a href="/task/list" class="back-link">← 戻る</a>
       </div>
-      <img src="/img/task_kaza.png" class="task-decoration-overlay bottom" alt="装飾下" />
-    </div>
+
+      <div class="new-task-body">
+        <form method="post" action="/task/new" th:object="${taskForm}">
+          <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error"></div>
+          <div th:if="${message}" th:text="${message}" class="alert alert-danger"></div>
+
+          <input type="hidden" th:field="*{task_id}" />
+
+          <div class="form-group">
+            <label for="title">タイトル：</label>
+            <input type="text" id="title" name="title" th:field="*{title}">
+          </div>
+
+          <div class="form-group">
+            <label for="year">期限：</label>
+            <div class="kigen">
+              <select id="year" name="year" th:field="*{year}">
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+              </select>
+              <span class="kigen-label">年</span>
+
+              <select id="month" name="month" th:field="*{month}">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <span class="kigen-label">月</span>
+
+              <select id="day" name="day" th:field="*{day}">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+              </select>
+              <span class="kigen-label">日</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="status">ステータス：</label>
+            <div class="status">
+              <select id="status" name="status" th:field="*{status}">
+                <option value="進行中">進行中</option>
+                <option value="保留">保留</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary wide">保存</button>
+        </form>
+      </div>
+    </section>
   </main>
 </body>
 
