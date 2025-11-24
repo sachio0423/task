@@ -1,189 +1,149 @@
+/* 全体 */
 body {
   margin: 0;
-  font-family: 'Noto Sans JP', sans-serif;
-  background: url('../img/haike.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  font-family: "Hannari", "Sawarabi Mincho";
-  font-weight: 100;
-  max-width: 400px; /* 必要に応じて調整 */
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background-color: #f1f3f5;
+  color: #333;
 }
 
-.header {
-  height: 1rem; /* 必要に応じて調整 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #1a1535;
+/* ヘッダー */
+.app-header {
+  background-color: #262c33;
+  padding: 16px 0;
 }
 
-.header h1 {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
+.app-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-/* ステータス情報 -------------------------------------------------------------------------- */
-.section-header {
-  position: relative;
-  width: fit-content;
-  margin: 30px auto 0px auto; /* 中央寄せ */
-}
-
-.ornament {
-  display: block;
-  width: 70%; /* 画像の横幅に合わせる */
-  height: auto;
-  opacity: 0.9;
-    margin-left: auto;
-  margin-right: auto;
-}
-
-.section-header h1 {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Cinzel Decorative', 'Georgia', serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #b5a893;
+.app-title {
   margin: 0;
-  pointer-events: none; /* クリックの干渉を防ぐ */
+  color: #ffffff;
+  font-size: 20px;
 }
 
-.ornament {
-  height: 80px; /* 状況に応じて調整 */
-  opacity: 0.9;
-}
-/* end ステータス情報 ---------------------------------------------------------------------- */
-
-.new_task {
-  position: relative;
-  margin: 0px 30px; /* 任意で調整 */
+/* ページレイアウト */
+.page {
+  max-width: 960px;
+  margin: 40px auto;
 }
 
-.task-sakusei {
-  background-color: rgba(22, 0, 36, 0.7);
-  /* mix-blend-mode: soft-light; */
-  padding: 20px; /* フォーム周りの余白 */
-  border-radius: 8px;
-  position: relative;
-  z-index: 1;
+/* 新規作成カード */
+.new-task-card {
+  background-color: #dde2e7;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  padding: 18px 24px 24px;
 }
 
-.task-sakusei h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
+.new-task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.new-task-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .back-link {
-  display: block;
-  text-align: right; 
-  color: #fff;
+  font-size: 12px;
   text-decoration: none;
-  font-size: 0.8rem;
-  margin: 20px 20px 0 0;
+  color: #555;
 }
 
-.back-link:hover {
-  text-decoration: underline;
+/* 内側のダークエリア */
+.new-task-body {
+  margin-top: 8px;
+  background-color: #262c33;
+  border-radius: 4px;
+  padding: 18px 24px 24px;
+  color: #ffffff;
 }
 
-
-/* 入力フォーム------------------------------------------------------------------------------------ */
-.nyuryok {
-  margin: 20px ;
-}
-
+/* フォーム */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  font-size: 13px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 0.9rem;
+  display: inline-block;
+  width: 80px;
 }
 
-.form-group input[type="text"],
-.form-group select {
-  width: calc(100%); /* input[type="text"] と同じ幅にする */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* paddingとborderをwidthに含める */
-}
-
-.form-group select {
-  width: auto;
-  margin-right: 10px; /* 以前の設定は維持 */
-}
-
-.kigen {
-  display: flex;
-  gap: 5px; /* 各ボックスの間隔 */
-}
-
-.kigen select {
-  flex: 1; /* 均等に幅を配分 */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-group input[type="text"] {
+  width: calc(100% - 90px);
+  max-width: 520px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1px solid #c2c7ce;
   box-sizing: border-box;
 }
 
-.status{
-  display: flex;
+/* 期限 */
+.kigen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.status select{
-  flex: 1;
+
+.kigen select {
+  padding: 4px 6px;
+  border-radius: 3px;
+  border: 1px solid #c2c7ce;
+  font-size: 12px;
+  background-color: #ffffff;
+  color: #333;
 }
 
-/* end入力フォーム------------------------------------------------------------------------------------ */
+.kigen-label {
+  font-size: 12px;
+  margin-right: 4px;
+}
 
+/* ステータス */
+.status select {
+  padding: 4px 6px;
+  border-radius: 3px;
+  border: 1px solid #c2c7ce;
+  font-size: 12px;
+  background-color: #ffffff;
+  color: #333;
+}
 
-.btn-save {
-  display: block;
-  margin: 20px auto; /* 中央揃え */
-  border-radius: 8px; 
-  background-color:transparent;
-  border: 1px solid #ccc;
-  color: #fff;
-  padding: 7px 20px;
+/* ボタン（共通定義と合わせる） */
+.btn-primary {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 4px;
+  background-color: #ff5b30;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  border: none;
   cursor: pointer;
-  font-size: 0.8rem;
 }
 
+.btn-primary.wide {
+  width: 120px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* エラー表示 */
 .error {
-  color: #d9534f;
-  font-size: 0.8rem;
-  margin-bottom: 10px;
+  color: #ffb3b3;
+  font-size: 12px;
+  margin-bottom: 8px;
 }
 
 .alert-danger {
-  color: #a94442;
-}
-
-/* 装飾画像の共通設定 */
-.task-decoration-overlay {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: auto;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* 上の装飾画像 */
-.task-decoration-overlay.top {
-  top: 0;
-  transform: translateY(-2%); /* 必要に応じて調整 */
-}
-
-/* 下の装飾画像 */
-.task-decoration-overlay.bottom {
-  bottom: 0;
-  transform: translateY(2%) rotate(180deg); /* 必要に応じて調整 */
+  color: #ffb3b3;
+  font-size: 12px;
+  margin-bottom: 8px;
 }
